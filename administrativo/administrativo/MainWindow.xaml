@@ -1,0 +1,15 @@
+﻿<Window x:Class="administrativo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="480" Width="640">
+    <Grid Name="pantilla">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="181*"/>
+            <ColumnDefinition Width="451*"/>
+        </Grid.ColumnDefinitions>
+        <TreeView Name="TreeView" Margin="0" Loaded="TreeView_Loaded"
+	    SelectedItemChanged="TreeView_SelectedItemChanged"/>
+        <Grid Name="WorkSpace" Grid.Column="1" Margin="0"/>
+
+    </Grid>
+</Window>
