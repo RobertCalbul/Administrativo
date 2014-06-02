@@ -3,21 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             mc:Ignorable="d"  MouseMove="Window_MouseMove"
              d:DesignHeight="300" d:DesignWidth="300">
+
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="41*"/>
+            <ColumnDefinition Width="138*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="19*"/>
-            <RowDefinition Height="50*"/>
+            <RowDefinition Height="24*"/>
+            <RowDefinition Height="76*"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="54*"/>
+            <RowDefinition Height="137*"/>
         </Grid.RowDefinitions>
-        <TreeView Name="trvMenu" Grid.Row="1">
+
+        <TreeView Name="trvMenu" Grid.Row="1" Grid.ColumnSpan="3">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type MenuItem}" ItemsSource="{Binding Items}">
                     <TextBlock Text="{Binding Title}" />
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
+        <ListBox Name="List1" Width="150" HorizontalAlignment="Left" Grid.Row="4"
+                 PreviewMouseLeftButtonDown="List1_PreviewMouseLeftButtonDown">
+
+        </ListBox>
+        <ListBox Name="List2"  Grid.Row="4" Grid.Column="2" Margin="10"  AllowDrop="True" DragEnter="List2_DragEnter"
+                 DragOver="List2_DragEnter" Drop="List2_Drop" />
+        <ComboBox Name="comboGrupos" Margin="0" Grid.Row="3" SelectionChanged="comboGrupos_SelectionChanged"/>
+
+
 
     </Grid>
 </UserControl>

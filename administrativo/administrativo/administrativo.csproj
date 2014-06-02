@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="Clases\Conexion.cs" />
     <Compile Include="Clases\DepartamentoClass.cs" />
+    <Compile Include="Clases\User_group.cs" />
     <Compile Include="Interfaces\Departamento.xaml.cs">
       <DependentUpon>Departamento.xaml</DependentUpon>
     </Compile>

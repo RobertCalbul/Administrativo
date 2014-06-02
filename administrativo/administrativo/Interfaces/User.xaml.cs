@@ -1,4 +1,5 @@
-﻿using System;
+﻿using administrativo.Clases;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -21,9 +22,14 @@ namespace administrativo.Interfaces
     /// </summary>
     public partial class User : UserControl
     {
+        private ListBoxItem _dragged;
+        List<User_group> userGroup;
+        List<User_group> Privilegio;
         public User()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            userGroup = new User_group().findAll();
+
             MenuItem root = new MenuItem() { Title = "User Group" };
             MenuItem childItem1 = new MenuItem() { Title = "ADMINISTRADOR" };
             childItem1.Items.Add(new MenuItem() { Title = "Escritura" });
@@ -36,12 +42,67 @@ namespace administrativo.Interfaces
             root.Items.Add(childItem1);
             root.Items.Add(childItem2);
             trvMenu.Items.Add(root);
+            llenaCombo();
         }
 
-        private void UserGroupLoad(object sender, RoutedEventArgs e)
-        {
-           
+        public void llenaCombo(){
+            foreach (User_group list in userGroup)
+                this.comboGrupos.Items.Add(list.name);
+        }
 
+
+
+        private void comboGrupos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Privilegio = new User_group(this.comboGrupos.SelectedIndex+1).getPrivilegio();
+            this.List1.Items.Clear();
+            this.List2.Items.Clear();
+            foreach (User_group list in Privilegio)
+                this.List1.Items.Add(list.name);
+        }
+
+        private void List1_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (_dragged != null)
+                return;
+
+            UIElement element = List1.InputHitTest(e.GetPosition(List1)) as UIElement;
+
+            while (element != null)
+            {
+                if (element is ListBoxItem)
+                {
+                    _dragged = (ListBoxItem)element;
+                    break;
+                }
+                element = VisualTreeHelper.GetParent(element) as UIElement;
+            }
+        }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (_dragged == null)
+                return;
+            if (e.LeftButton == MouseButtonState.Released)
+            {
+                _dragged = null;
+                return;
+            }
+
+            DataObject obj = new DataObject(DataFormats.Text, _dragged.ToString());
+            DragDrop.DoDragDrop(_dragged, obj, DragDropEffects.All);
+        }
+        private void List2_DragEnter(object sender, DragEventArgs e)
+        {
+            if (_dragged == null || e.Data.GetDataPresent(DataFormats.Text, true) == false)
+                e.Effects = DragDropEffects.None;
+            else
+                e.Effects = DragDropEffects.All;
+        }
+        private void List2_Drop(object sender, DragEventArgs e)
+        {
+            List1.Items.Remove(_dragged);
+            List2.Items.Add(_dragged);
         }
 
     }
