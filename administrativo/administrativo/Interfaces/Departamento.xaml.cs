@@ -32,53 +32,40 @@ namespace administrativo.Interfaces
             
         }
         int index = 0;
-        private void load_grid(object sender, RoutedEventArgs e)
-        {
-            
-
-        }
-
-        private void addRow_Click(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
-
+        //seleccionar una fila en la tabla
         private void data_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             foreach (object obj in this.data.SelectedItems)
             {
                 this.tName.Text = ((DepartamentoClass)obj).nombre;
                 this.tId.Text = ((DepartamentoClass)obj).id+"";
                 this.tRut.Text = ((DepartamentoClass)obj).rut_jefe;
-            }
-            
-       
+            } 
         }
 
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        private void btnUpdate_Click(object sender, MouseButtonEventArgs e)
         {
             if (new DepartamentoClass(int.Parse(this.tId.Text),
-                                        this.tName.Text, this.tRut.Text
-                                        ).update() > 0)
+                                                    this.tName.Text, this.tRut.Text
+                                                    ).update() > 0)
             {
                 _Departamento = new DepartamentoClass().findAll();
                 this.data.ItemsSource = _Departamento;
             }
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private void btnAdd_Click(object sender, MouseButtonEventArgs e)
         {
             new DepartamentoClass(this.tName.Text, this.tRut.Text).save();
             _Departamento = new DepartamentoClass().findAll();
             this.data.ItemsSource = _Departamento;
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void btnDelete_Click(object sender, MouseButtonEventArgs e)
         {
             foreach (object obj in this.data.SelectedItems)
             {
-                new DepartamentoClass(((DepartamentoClass)obj).id).Delete(); 
+                new DepartamentoClass(((DepartamentoClass)obj).id).Delete();
             }
             _Departamento = new DepartamentoClass().findAll();
             this.data.ItemsSource = _Departamento;

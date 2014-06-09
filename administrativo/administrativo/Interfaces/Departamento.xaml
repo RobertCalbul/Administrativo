@@ -5,33 +5,43 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:Clases="clr-namespace:administrativo.Clases" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="administrativo.Interfaces.Departamento" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="757" d:DesignWidth="702">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="11*"/>
-            <ColumnDefinition Width="227*"/>
-            <ColumnDefinition Width="46*"/>
-            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="22*"/>
+            <ColumnDefinition Width="159*"/>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="243*"/>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="218*"/>
+            <ColumnDefinition Width="32*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="113*"/>
             <RowDefinition Height="39*"/>
-            <RowDefinition Height="102*"/>
-            <RowDefinition Height="115*"/>
-            <RowDefinition Height="23*"/>
-            <RowDefinition Height="21*"/>
+            <RowDefinition Height="11*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="289*"/>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="83*"/>
+            <RowDefinition Height="53*"/>
         </Grid.RowDefinitions>
-        <Label Margin="0" Grid.Row="1">
-
-        </Label>
-        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
-            <DataGrid Name="data" Loaded="load_grid" ColumnWidth="15*" SelectionChanged="data_SelectionChanged"   />
+        <Grid Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="5">
+            <DataGrid Name="data"  ColumnWidth="15*" SelectionChanged="data_SelectionChanged"   />
         </Grid>
-        <Label Content="+" Grid.Column="2" Grid.Row="3" Background="#FF2CD125" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" MouseDown="addRow_Click"/>
-        <TextBox Name="tName" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,28,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="tRut" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,56,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button Content="actualizar" Grid.Column="1" HorizontalAlignment="Left" Margin="142,7,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="btnUpdate_Click" Height="22"/>
-        <TextBox Name="tId" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-        <Button Name="btnAdd" Content="Agregar" Grid.Column="1" HorizontalAlignment="Left" Margin="142,63,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="btnAdd_Click"/>
-        <Button Name="btnDelete" Content="Elminar" Grid.Column="1" HorizontalAlignment="Left" Margin="142,36,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="btnDelete_Click"/>
+        <TextBox Name="tName" Grid.Column="3" Margin="0" Grid.Row="3" TextWrapping="Wrap" Text="TextBox"/>
+        <TextBox Name="tRut" Grid.Column="3" Margin="0" Grid.Row="5" TextWrapping="Wrap" Text="TextBox"/>
+        <Label Content="btnActualizar" Grid.Column="5" Margin="0" Grid.Row="1" MouseDown="btnUpdate_Click" Background="#FFE0D82B"/>
+        <TextBox Name="tId" Grid.Column="3" Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" IsEnabled="False"/>
+        <Label Name="btnAdd" Content="Agregar" Grid.Column="5" Margin="0" Grid.Row="3" Background="#FF66D43D" MouseDown="btnAdd_Click"/>
+        <Label Name="btnDelete" Content="Elminar" Grid.Column="5" Margin="0" Grid.Row="9" Background="#FFEA2121" MouseDown="btnDelete_Click"/>
+        <Label Name="btnNewItem" Content="Nuevo" Grid.Column="3" Margin="0" Grid.Row="9" Background="#FF56E421"/>
+        <Label Content="ID depto" Grid.Column="1" Margin="0" Grid.Row="1"/>
+        <Label Content="Nombre depto" Grid.Column="1" Margin="0" Grid.Row="3"/>
+        <Label Content="Rut jefe" Grid.Column="1" Margin="0" Grid.Row="5"/>
     </Grid>
 </UserControl>
